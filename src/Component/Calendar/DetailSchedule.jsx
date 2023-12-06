@@ -2,14 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 
-function DetailSchedule(props) {
+function DetailSchedule({ setisAddScheduleOn, setisViewScheduleOn, setisDetailScheduleOn }) {
+	// 이전으로 가기(ViewSchedule로 이동)
+	const goViewSchedule = () => {
+		setisDetailScheduleOn(false);
+		setisViewScheduleOn(true);
+	};
+
+	//편집 누르면 AddSchedule로 이동
+	const goAddSchedule = () => {
+		setisDetailScheduleOn(false);
+		setisAddScheduleOn(true);
+	};
+
 	return (
 		<Wrapper>
 			<Window>
 				<Header>
-					<button>&lt;</button>
+					<button onClick={goViewSchedule}>&lt;</button>
 					<span>일정 세부사항</span>
-					<button>편집</button>
+					<button onClick={goAddSchedule}>편집</button>
 				</Header>
 				<Body>
 					<WhiteBackground>
@@ -67,6 +79,10 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
 const Window = styled.div`

@@ -19,7 +19,7 @@ export default CalendarMain;
 // MainPage의 ConBody 부분을 꽉 채워줌
 const Wrapper = styled.div`
 	position: relative;
-	top: -51px;
+	/* top: -51px; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;

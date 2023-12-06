@@ -14,16 +14,18 @@ const StyledButton = styled.button`
 	height: ${(props) => props.height || '30px'};
 	background-color: ${(props) => props.color || 'white'};
 	cursor: pointer;
+	margin: 0 ${(props) => `${props.margin}px`};
 	& > span {
 		font-size: 10px;
 		position: relative;
 		top: -1px;
-		color: ${(props) => (props.color ? 'white' : 'black')};
+		color: ${(props) => (props.fontColor ? props.fontColor : 'black')};
+		font-weight: bold;
 	}
 `;
 
 function Button(props) {
-	const { title, onClick, fontSize, width, height, color, type } = props;
+	const { title, onClick, fontSize, width, height, color, fontColor, type, margin } = props;
 
 	return (
 		<StyledButton
@@ -32,6 +34,8 @@ function Button(props) {
 			width={width}
 			height={height}
 			color={color}
+			fontColor={fontColor}
+			margin={margin}
 			type={type}>
 			<span>{title || 'button'}</span>
 		</StyledButton>

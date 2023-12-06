@@ -1,16 +1,43 @@
 //메인페이지
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 import Schedule from './Schedule';
 import Todo from './Todo';
+import AddSchedule from '../Calendar/AddSchedule';
+import ViewSchedule from '../Calendar/ViewSchedule';
+import DetailSchedule from '../Calendar/DetailSchedule';
+import TodoList from '../TodoList/TodoList';
 
 function SideContent(props) {
+	const [isAddScheduleOn, setisAddScheduleOn] = useState(false);
+	const [isViewScheduleOn, setisViewScheduleOn] = useState(false);
+	const [isDetailScheduleOn, setisDetailScheduleOn] = useState(false);
+	const [isTodoListOn, setisTodoListOn] = useState(false);
+
+	// AddSchedule에서 전송받은 name데이터가 여기로 와야함.
+	const showAddSchedule = () => {
+		setisAddScheduleOn(true);
+	};
+
+	// 투두리스트 보이기
+	const showTodoList = () => {
+		setisTodoListOn(true);
+	};
+
 	const btn = props.btn;
 	let button, content;
-	if (btn) {
+	if (btn && props.type === 'Schedule') {
 		button = (
-			<AddBtn>
+			<AddBtn onClick={showAddSchedule}>
+				<span>+</span>
+			</AddBtn>
+		);
+	}
+
+	if (btn && props.type === 'Todo') {
+		button = (
+			<AddBtn onClick={showTodoList}>
 				<span>+</span>
 			</AddBtn>
 		);
@@ -50,6 +77,28 @@ function SideContent(props) {
 				{button}
 			</Header>
 			<Body>{content}</Body>
+			{isAddScheduleOn && (
+				<AddSchedule
+					setisViewScheduleOn={setisViewScheduleOn}
+					setisAddScheduleOn={setisAddScheduleOn}
+				/>
+			)}
+			{isViewScheduleOn && (
+				<ViewSchedule
+					setisViewScheduleOn={setisViewScheduleOn}
+					setisDetailScheduleOn={setisDetailScheduleOn}
+					setisAddScheduleOn={setisAddScheduleOn}
+					setisTodoListOn={setisTodoListOn}
+				/>
+			)}
+			{isDetailScheduleOn && (
+				<DetailSchedule
+					setisDetailScheduleOn={setisDetailScheduleOn}
+					setisViewScheduleOn={setisViewScheduleOn}
+					setisAddScheduleOn={setisAddScheduleOn}
+				/>
+			)}
+			{isTodoListOn && <TodoList setisTodoListOn={setisTodoListOn} />}
 		</Wrapper>
 	);
 }

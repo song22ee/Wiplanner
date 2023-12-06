@@ -2,13 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 
-function DetailFixSchedule(props) {
+function DetailFixSchedule({ setisDetailFixScheduleOn }) {
+	// 모달 끄기
+	const closeModal = () => {
+		setisDetailFixScheduleOn(false);
+	};
+
 	return (
 		<Wrapper>
 			<Window>
 				<Header>
 					<span>고정 일정 세부사항</span>
-					<button>X</button>
+					<button onClick={closeModal}>X</button>
 				</Header>
 				<Body>
 					<WhiteBackground>
@@ -57,6 +62,11 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	//맨 앞으로
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
 const Window = styled.div`

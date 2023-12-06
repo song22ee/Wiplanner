@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import Theme from '../../Theme';
 
 function Schedule(props) {
+	const { onClick } = props;
+
 	return (
 		<Wrapper
+			onClick={onClick}
 			width={props.width}
 			height={props.height}>
 			<ColorTag />

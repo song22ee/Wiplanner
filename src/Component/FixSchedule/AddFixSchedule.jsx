@@ -2,7 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 
-function AddFixSchedule(props) {
+function AddFixSchedule({ setisAddFixScheduleOn, setisDetailFixScheduleOn }) {
+
+	// 모달 끄기
+	const closeModal = () => {
+		setisAddFixScheduleOn(false);
+	};
+
+	// 고정일정 세부사항
+	const goDetailFixSchedule = () => {
+		setisAddFixScheduleOn(false);
+		setisDetailFixScheduleOn(true);
+	};
+
 	return (
 		<Wrapper>
 			<Window>
@@ -264,10 +276,10 @@ function AddFixSchedule(props) {
 					</SectionRight>
 				</Body>
 				<Bottom>
-					<CancelBtn>
+					<CancelBtn onClick={closeModal}>
 						<span>취소</span>
 					</CancelBtn>
-					<CompleteBtn>
+					<CompleteBtn onClick={goDetailFixSchedule}>
 						<span>완료</span>
 					</CompleteBtn>
 				</Bottom>
@@ -286,6 +298,11 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	//맨 앞으로
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
 const Window = styled.div`

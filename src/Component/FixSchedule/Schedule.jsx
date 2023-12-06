@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import Theme from '../../Theme';
 
 function Schedule(props) {
+	const { onClick } = props;
+
 	const backgroundColor = Theme.bule;
 	return (
 		<Wrapper
 			background={backgroundColor}
-			height={65}>
+			height={65}
+			onClick={onClick}>
 			<Name>
 				<span>운동</span>
 			</Name>

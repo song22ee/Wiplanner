@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 
-function AddSchedule(props) {
+function AddSchedule({ setisViewScheduleOn, setisAddScheduleOn }) {
+	const [name, setname] = useState('');
+
+	const handleChangeName = (event) => {
+		setname(event.target.value);
+	};
+
+	// 모달 끄기
+	const closeModal = () => {
+		console.log(setisAddScheduleOn);
+		setisAddScheduleOn(false);
+	};
+
+	const complete = (event) => {
+		alert(`이름 : ${name}`);
+		event.preventDefault();
+		closeModal(); // 일정 추가창 닫기.
+		setisViewScheduleOn(true);
+	};
+
 	return (
 		<Wrapper>
-			<Window>
+			<Window
+				onSubmit={complete}
+				action="/SideContent">
 				<Header>
 					<span>일정 추가</span>
 				</Header>
@@ -16,6 +37,8 @@ function AddSchedule(props) {
 								size="50"
 								type="text"
 								placeholder="일정 이름"
+								onChange={handleChangeName}
+								value={name}
 							/>
 						</InputFormat1>
 						<InputFormat>
@@ -224,12 +247,20 @@ function AddSchedule(props) {
 					</SectionRight>
 				</Body>
 				<Bottom>
-					<CancelBtn>
-						<span>취소</span>
-					</CancelBtn>
-					<CompleteBtn>
-						<span>완료</span>
-					</CompleteBtn>
+					<FormBtn
+						type="button"
+						background="#E6E1E1"
+						color="black"
+						onClick={closeModal}>
+						취소
+					</FormBtn>
+					<FormBtn
+						type="submit"
+						background="#786161"
+						color="white"
+						onClick={complete}>
+						완료
+					</FormBtn>
 				</Bottom>
 			</Window>
 		</Wrapper>
@@ -246,12 +277,17 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
-const Window = styled.div`
+const Window = styled.form`
 	width: 970px;
 	height: 460px;
 	background-color: ${Theme.second};
+	z-index: 999;
 `;
 
 const Header = styled.div`
@@ -428,28 +464,21 @@ const Bottom = styled.div`
 	height: 50px;
 	display: flex;
 	justify-content: center;
-	div {
-		width: 50px;
-		height: 30px;
-		margin: 0 10px;
-		border-radius: 5px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: none;
-		span {
-			font-size: 12px;
-		}
-	}
 `;
 
-const CancelBtn = styled.div`
+const FormBtn = styled.button`
+	width: 50px;
+	height: 30px;
+	margin: 0 5px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #b1b1b1;
 	background-color: ${Theme.forth};
-`;
-
-const CompleteBtn = styled.div`
-	background-color: ${Theme.main};
+	background-color: ${(props) => `${props.background}`};
+	color: ${(props) => `${props.color}`};
 	span {
-		color: white;
+		font-size: 10px;
 	}
 `;

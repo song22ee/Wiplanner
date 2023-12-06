@@ -14,20 +14,20 @@ const CustomCalendar = (props) => {
 	const [dayList, setDayList] = useState([]);
 	const [stickers, setStickers] = useState([]);
 
-	useEffect(() => {
-		axios
-			.get('/api/schedule-api/calender-scheduler', {
-				params: {
-					month: activeMonth,
-				},
-			})
-			.then(function (response) {
-				//성공한 경우 실행
-				setDayList(response.data.scheduleList);
-				setStickers(response.data.stickerList);
-			})
-			.catch((error) => console.log(error)); //에러인 경우 실행
-	}, [activeMonth, props.isAdd]);
+	// useEffect(() => {
+	// 	axios
+	// 		.get('/api/schedule-api/calender-scheduler', {
+	// 			params: {
+	// 				month: activeMonth,
+	// 			},
+	// 		})
+	// 		.then(function (response) {
+	// 			//성공한 경우 실행
+	// 			setDayList(response.data.scheduleList);
+	// 			setStickers(response.data.stickerList);
+	// 		})
+	// 		.catch((error) => console.log(error)); //에러인 경우 실행
+	// }, [activeMonth, props.isAdd]);
 
 	//받아온 인자(activStartDate)에 따라 현재 보여지는 달(activeMonth)의 state를 변경하는 함수
 	const getActiveMonth = (action, activeStartDate) => {

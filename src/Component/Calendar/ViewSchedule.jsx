@@ -3,25 +3,51 @@ import styled from 'styled-components';
 import Theme from '../../Theme';
 import Schedule from '../SideContents/Schedule';
 
-function ViewSchedule(props) {
+function ViewSchedule({ setisAddScheduleOn, setisTodoListOn, setisViewScheduleOn, setisDetailScheduleOn }) {
+	
+	// 모달 끄기
+	const closeModal = () => {
+		console.log(setisViewScheduleOn);
+		setisViewScheduleOn(false);
+	};
+
+	// 스케줄 상세보기 클릭
+	const clickSchedule = () => {
+		closeModal();
+		setisDetailScheduleOn(true);
+	};
+
+	// 일정 추가
+	const showAddSchedule = () => {
+		closeModal();
+		setisAddScheduleOn(true);
+	};
+
+	// 투두리스트
+	const showTodoList = () => {
+		closeModal();
+		setisTodoListOn(true);
+	};
+
 	return (
 		<Wrapper>
 			<Window>
 				<Header>
 					<span>2023년 11월 25일 토요일</span>
-					<button>❌</button>
+					<button onClick={closeModal}>X</button>
 				</Header>
 				<Body>
 					<ConHeader>
 						<TodoBtn>
-							<span>✅ 투두리스트</span>
+							<span onClick={showTodoList}>✅ 투두리스트</span>
 						</TodoBtn>
 						<AddScheduleBtn>
-							<span>➕ 일정추가</span>
+							<span onClick={showAddSchedule}>➕ 일정추가</span>
 						</AddScheduleBtn>
 					</ConHeader>
 					<ConBody>
 						<Schedule
+							onClick={clickSchedule}
 							width={380}
 							height={43}
 						/>
@@ -42,6 +68,11 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	//맨 앞으로 
+	z-index: 999;
+	position: absolute;
+	top: 0;
+	left: 0;
 `;
 
 const Window = styled.div`

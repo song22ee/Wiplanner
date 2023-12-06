@@ -21,9 +21,6 @@ export const MainCalender = styled.div`
 		background-color: ${Theme.third};
 		height: 50px;
 		/* border-bottom: 1px solid #b1b1b1; */
-		width: 300px;
-		position: relative;
-		left: 415px;
 	}
 
 	/* 달력 상단 버튼 최소 크기 */
@@ -44,6 +41,10 @@ export const MainCalender = styled.div`
 	/* .react-calendar__navigation button:disabled {
 		background-color: #dca600 !important;
 	} */
+
+	.react-calendar__navigation__arrow {
+		width: 500px;
+	}
 
 	/* 달력 상단 년/월 글씨, 화살표 커스텀*/
 	.react-calendar__navigation__label > span,

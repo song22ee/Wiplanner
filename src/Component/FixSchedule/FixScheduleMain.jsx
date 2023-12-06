@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Theme from '../../Theme';
 import TimeTableImg from '../../img/TimeTable.png';
 import Schedule from './Schedule';
+import AddFixSchedule from './AddFixSchedule'
+import DetailFixSchedule from './DetailFixSchedule'
 
 function FixScheduleMain(props) {
+	const [isAddFixScheduleOn, setisAddFixScheduleOn] = useState(false);
+	const [isDetailFixScheduleOn, setisDetailFixScheduleOn] = useState(false);
+
+	// 고정일정 추가
+	const goAddFixSchedule = () => {
+		setisAddFixScheduleOn(true);
+	};
+
+	// 고정일정 세부사항
+	const goDetailFixSchedule = () => {
+		setisAddFixScheduleOn(false);
+		setisDetailFixScheduleOn(true);
+	};
+
 	return (
 		<Wrapper>
 			<Header>
 				<AddBtn>
-					<span>+ 고정일정 추가</span>
+					<span onClick={goAddFixSchedule}>+ 고정일정 추가</span>
 				</AddBtn>
 			</Header>
 			<TimeTable>
@@ -17,8 +33,20 @@ function FixScheduleMain(props) {
 					src={TimeTableImg}
 					alt=""
 				/>
-				<Schedule />
+				<Schedule onClick={goDetailFixSchedule} />
 			</TimeTable>
+			{isAddFixScheduleOn && (
+				<AddFixSchedule
+					setisAddFixScheduleOn={setisAddFixScheduleOn}
+					setisDetailFixScheduleOn={setisDetailFixScheduleOn}
+				/>
+			)}
+			{isDetailFixScheduleOn && (
+				<DetailFixSchedule
+					setisAddFixScheduleOn={setisAddFixScheduleOn}
+					setisDetailFixScheduleOn={setisDetailFixScheduleOn}
+				/>
+			)}
 		</Wrapper>
 	);
 }
@@ -32,6 +60,7 @@ const Wrapper = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100%;
+	
 `;
 
 const Header = styled.div`
