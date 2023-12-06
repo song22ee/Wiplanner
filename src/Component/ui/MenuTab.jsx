@@ -1,29 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import Theme from '../../Theme';
 
 const StyledButton = styled.button`
 	width: ${(props) => `${props.width}px`};
 	height: 30px;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
-	background-color: ${(props) => (props.clicked ? 'white' : '#786161')};
+	background-color: ${(props) => props.background};
 	margin-right: 15px;
 	border: 1px solid white;
 
 	& > span {
 		font-weight: bolder;
 		font-size: 14px;
-		color: ${(props) => (props.clicked ? 'black' : 'white')};
+		color: ${(props) => (props.color)};
 	}
 `;
 
 function MenuTab(props) {
-	const { title, onClick, width, clicked } = props;
+	const { title, onClick, width, color, background } = props;
 
 	return (
 		<StyledButton
-			clicked={clicked}
+			color={color}
+			background={background}
 			onClick={onClick}
 			width={width}>
 			<span>{title || 'button'}</span>

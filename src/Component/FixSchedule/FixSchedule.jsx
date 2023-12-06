@@ -4,13 +4,17 @@ import styled from 'styled-components';
 
 import FixScheduleMain from './FixScheduleMain';
 
-import Header from '../Main/Header';
+import { useNavigate } from 'react-router-dom';
+import MenuTab from '../ui/MenuTab';
+import Theme from '../../Theme';
+
 import MenuBar from '../SideContents/MenuBar';
 import Side from '../SideContents/Side';
 
 function FixSchedule(props) {
 	const [isAdd, setIsAdd] = useState(false);
 	const [selectDate, setSelectDate] = useState(null);
+		const navigate = useNavigate();
 
 	const changeDate = (date) => {
 		setSelectDate(date);
@@ -19,7 +23,38 @@ function FixSchedule(props) {
 
 	return (
 		<Wrapper>
-			<Header />
+			<Header>
+				<span>WIPLANER</span>
+				<Tabs>
+					<MenuTab
+						width={76}
+						title="캘린더"
+						background="#786161"
+						color="white"
+						onClick={() => {
+							navigate('/');
+						}}
+					/>
+					<MenuTab
+						width={100}
+						title="타임 테이블"
+						background="#786161"
+						color="white"
+						onClick={() => {
+							navigate('/TimeTable');
+						}}
+					/>
+					<MenuTab
+						width={76}
+						title="고정일정"
+						background="white"
+						color="black"
+						onClick={() => {
+							navigate('/FixSchedule');
+						}}
+					/>
+				</Tabs>
+			</Header>
 			<Body>
 				<MenuBar />
 				<Side />
@@ -41,6 +76,34 @@ const Wrapper = styled.div`
 	padding: 0 px;
 	box-sizing: border-box;
 `;
+
+const Header = styled.div`
+	width: 1535px;
+	height: 100px;
+	border-bottom: 1px solid white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: ${Theme.main};
+	padding-left: 30px;
+	box-sizing: border-box;
+	& > span {
+		color: white;
+		font-size: 30px;
+		font-weight: bold;
+	}
+`;
+
+const Tabs = styled.div`
+	width: 415px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+	top: 26px;
+`;
+
 
 const Body = styled.div`
 	width: 100%;

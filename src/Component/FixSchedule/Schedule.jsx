@@ -3,21 +3,23 @@ import styled from 'styled-components';
 import Theme from '../../Theme';
 
 function Schedule(props) {
-	const { onClick } = props;
+	const { onClick, top, left, backgroundColor, title, start, end, height } = props;
 
-	const backgroundColor = Theme.bule;
 	return (
 		<Wrapper
 			background={backgroundColor}
-			height={65}
-			onClick={onClick}>
+			height={height}
+			onClick={onClick}
+			top={top}
+			left={left}
+		>
 			<Name>
-				<span>운동</span>
+				<span>{title}</span>
 			</Name>
 			<Time>
-				<span>09:55</span>
+				<span>{start}</span>
 				<span> ~ </span>
-				<span>11:55</span>
+				<span>{end}</span>
 			</Time>
 		</Wrapper>
 	);
@@ -28,8 +30,8 @@ export default Schedule;
 // MainPage의 ConBody 부분을 꽉 채워줌
 const Wrapper = styled.div`
 	position: absolute;
-	top: 36px;
-	left: 71px;
+	top: ${(props) => `${props.top}px`};
+	left: ${(props) => `${props.left}px`};
 	width: 147px;
 	height: ${(props) => `${props.height}px`};
 	background-color: ${(props) => `${props.background}`};

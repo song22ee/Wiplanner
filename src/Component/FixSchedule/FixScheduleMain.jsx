@@ -33,7 +33,99 @@ function FixScheduleMain(props) {
 					src={TimeTableImg}
 					alt=""
 				/>
-				<Schedule onClick={goDetailFixSchedule} />
+				<Schedule
+					title="운동"
+					start="07:00"
+					end="08:00"
+					top={36}
+					left={71}
+					height={65}
+					backgroundColor="#3F87DC"
+					onClick={goDetailFixSchedule}
+				/>
+
+				<Schedule
+					title="운동"
+					start="07:00"
+					end="08:00"
+					top={36}
+					left={365}
+					height={65}
+					backgroundColor="#3F87DC"
+					onClick={goDetailFixSchedule}
+				/>
+
+				<Schedule
+					title="운동"
+					start="07:00"
+					end="08:00"
+					top={36}
+					left={951}
+					height={65}
+					backgroundColor="#3F87DC"
+					onClick={goDetailFixSchedule}
+				/>
+
+				<Schedule
+					title="학교"
+					start="09:55"
+					end="12:35"
+					top={160}
+					left={218}
+					height={90}
+					backgroundColor="#4FBF4C"
+					onClick={goDetailFixSchedule}
+				/>
+				<Schedule
+					title="학교"
+					start="09:55"
+					end="12:35"
+					top={160}
+					left={512}
+					height={90}
+					backgroundColor="#4FBF4C"
+					onClick={goDetailFixSchedule}
+				/>
+				<Schedule
+					title="학교"
+					start="13:35"
+					end="16:20"
+					top={285}
+					left={512}
+					height={90}
+					backgroundColor="#4FBF4C"
+					onClick={goDetailFixSchedule}
+				/>
+				<Schedule
+					title="알바"
+					start="19:20"
+					end="22:50"
+					top={485}
+					left={218}
+					height={100}
+					backgroundColor="#FFBE5E"
+					onClick={goDetailFixSchedule}
+				/>
+				<Schedule
+					title="알바"
+					start="19:20"
+					end="22:50"
+					top={485}
+					left={512}
+					height={100}
+					backgroundColor="#FFBE5E"
+					onClick={goDetailFixSchedule}
+				/>
+				<Schedule
+					title="알바"
+					start="19:20"
+					end="22:50"
+					top={485}
+					left={803}
+					height={100}
+					backgroundColor="#FFBE5E"
+					onClick={goDetailFixSchedule}
+				/>
 			</TimeTable>
 			{isAddFixScheduleOn && (
 				<AddFixSchedule

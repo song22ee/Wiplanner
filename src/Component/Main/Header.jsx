@@ -8,10 +8,6 @@ import Theme from '../../Theme';
 import MenuTab from '../ui/MenuTab';
 
 function Header(props) {
-	const [CalendarClicked, setCalendarClicked] = useState(false);
-	const [TimeTableClicked, setTimeTableClicked] = useState(false);
-	const [TodoListClicked, setTodoListClicked] = useState(false);
-
 	const navigate = useNavigate();
 
 	return (
@@ -20,34 +16,26 @@ function Header(props) {
 			<Tabs>
 				<MenuTab
 					width={76}
-					clicked={CalendarClicked}
 					title="캘린더"
+					background="white"
+					color="black"
 					onClick={() => {
-						setCalendarClicked(true);
-						setTimeTableClicked(false);
-						setTodoListClicked(false);
 						navigate('/');
 					}}
 				/>
 				<MenuTab
 					width={100}
-					clicked={TimeTableClicked}
 					title="타임 테이블"
+					background="#786161"
 					onClick={() => {
-						setCalendarClicked(false);
-						setTimeTableClicked(true);
-						setTodoListClicked(false);
 						navigate('/TimeTable');
 					}}
 				/>
 				<MenuTab
 					width={76}
-					clicked={TodoListClicked}
 					title="고정일정"
+					background="#786161"
 					onClick={() => {
-						setCalendarClicked(false);
-						setTimeTableClicked(false);
-						setTodoListClicked(true);
 						navigate('/FixSchedule');
 					}}
 				/>

@@ -19,7 +19,7 @@ function DetailFixSchedule({ setisDetailFixScheduleOn }) {
 					<WhiteBackground>
 						<ConHeader>
 							<Name>
-								<span>친구 생일</span>
+								<span>학교</span>
 							</Name>
 							<Date>
 								<span>09:55</span>
@@ -155,7 +155,7 @@ const ColorTag = styled.div`
 		width: 17px;
 		height: 17px;
 		border-radius: 15px;
-		background-color: ${Theme.yellow};
+		background-color: ${Theme.green};
 	}
 `;
 

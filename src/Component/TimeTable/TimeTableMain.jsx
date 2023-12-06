@@ -13,6 +13,7 @@ function TimeTableMain(props) {
 					alt=""
 				/>
 			</TimeTable>
+
 		</Wrapper>
 	);
 }
